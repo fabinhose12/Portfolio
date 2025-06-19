@@ -1,0 +1,704 @@
+/* --- RESET E ESTILOS GLOBAIS --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    /* Esta é uma alternativa moderna que pede ao próprio navegador 
+       para animar a rolagem ao clicar em links âncora. */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #100820;
+    color: #EAEAEA;
+    /* Isso previne a rolagem horizontal indesejada, o que está correto. */
+    overflow-x: hidden; 
+
+    /* === IMPORTANTE === */
+    /* GARANTA QUE NÃO EXISTE NENHUMA LINHA COMO 'overflow-y: hidden;' 
+       ou 'overflow: hidden;' APLICADA AO BODY. */
+    
+    padding-top: 100px;
+}
+/* 2. Modifique a regra do .navbar para fixá-lo no topo */
+.navbar {
+    /* Propriedades para fixar o header */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que o header fique sobre todo o conteúdo */
+    
+    /* Estilo visual para o header fixo */
+    background-color: rgba(16, 8, 32, 0.8); /* Cor de fundo com transparência */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco - muito moderno! */
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidade com Safari */
+    border-bottom: 1px solid rgba(58, 44, 82, 0.5); /* Linha sutil de separação */
+
+    /* O padding agora vai direto no navbar */
+    padding: 1.5rem 0; /* Um pouco menos de padding vertical */
+    transition: padding 0.3s ease; /* Animação suave */
+}
+.nav-links a.active-link {
+    color: #bf69f2; /* O tom de roxo principal do seu site */
+    font-weight: 700; /* Opcional: deixa a fonte um pouco mais forte */
+}
+.nav-links a:hover:not(.active-link) {
+    color: #d9b3ff; /* Usamos um roxo mais claro para o hover */
+}
+
+/* 3. (Opcional) Efeito para diminuir o header ao rolar a página */
+body.scrolled .navbar {
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 4. Mova o padding do container principal para a primeira seção */
+/* A regra .container não precisa de padding-top, pois o body já tem */
+.hero-section {
+    text-align: center;
+    /* Adicionamos o padding aqui para manter o espaço do topo */
+    padding: 4rem 0 6rem 0; 
+}
+
+/* --- EFEITO DE ONDAS NO FUNDO (SVG) --- */
+.background-waves {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+.background-waves svg {
+    width: 150%; /* Faz as ondas maiores que a tela para um efeito mais suave */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* --- CONTAINER PRINCIPAL --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* --- CABEÇALHO (NAVBAR) --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    border: 2px solid #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: #EAEAEA;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #bf69f2;
+}
+
+.contact-email {
+    font-weight: 600;
+}
+
+/* No seu arquivo style.css */
+
+/* 1. Ajuste o container dentro do navbar para o novo layout */
+.navbar .container {
+    display: flex;
+    justify-content: space-between; /* Mágica da centralização */
+    align-items: center;
+    width: 100%;
+}
+
+/* 2. Estilo para o novo botão de currículo */
+.resume-button {
+    text-decoration: none;
+    color: #eaeaea;
+    border: 1px solid #3a2c52;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* Deixa o texto em maiúsculas */
+    font-size: 0.9rem;
+}
+
+.resume-button:hover {
+    background-color: #bf69f2;
+    border-color: #bf69f2;
+    color: #100820;
+}
+
+
+/* 3. A SOLUÇÃO PARA O HEADER NÃO COBRIR O TÍTULO DA SEÇÃO */
+/*
+   Esta propriedade mágica diz ao navegador: "quando você rolar para 
+   um destes elementos, deixe um espaço de 100px no topo".
+   O valor deve ser a altura do seu header fixo.
+*/
+#inicio, #projetos, #servicos, #contato { /* Adicione os IDs de todas as suas seções aqui */
+    scroll-margin-top: 100px;
+}
+
+/* --- SEÇÃO HERO (PRINCIPAL) --- */
+.hero-section {
+    text-align: center;
+    padding: 4rem 0 6rem 0;
+    position: relative;
+}
+
+.profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #bf69f2;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.hero-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.hero-section .title {
+    font-size: 6rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+/* Efeito de texto com contorno */
+.title .outline {
+    color: transparent;
+    -webkit-text-stroke: 2px #fff;
+    text-stroke: 2px #fff;
+}
+
+/* Efeito de texto com gradiente */
+.title .gradient-text {
+    background: linear-gradient(90deg, #8A2BE2, #bf69f2, #FF00FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero-section .subtitle {
+    font-size: 1.2rem;
+    color: #c0c0c0;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section .description {
+    color: #a0a0a0;
+}
+
+/* --- SEÇÃO DE PROJETOS --- */
+.projects-section {
+    padding: 2rem 0 6rem 0;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: #1c1032;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #3a2c52;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px #bf69f255;
+}
+
+.project-card .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+
+.project-card-info {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.project-card-info .project-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}
+
+.project-card-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.project-card-info p {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin: 0;
+}
+/* --- ESTILOS GERAIS PARA AS NOVAS SEÇÕES --- */
+.section-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #8A2BE2, #bf69f2, #FF00FF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #c0c0c0;
+    margin-bottom: 3rem;
+}
+
+
+/* --- SEÇÃO DE SERVIÇOS --- */
+.services-section {
+    padding: 6rem 0;
+}
+
+.service-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.service-tags span {
+    background-color: #1c1032;
+    border: 1px solid #3a2c52;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.service-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.service-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background-color: #1c1032;
+    border: 1px solid #3a2c52;
+    padding: 1.5rem;
+    border-radius: 15px;
+    transition: border-color 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: #bf69f2;
+}
+
+.service-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #100820;
+    border: 1px solid #3a2c52;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.service-card h3 {
+    margin: 0 0 0.25rem 0;
+}
+
+.service-card p {
+    margin: 0;
+    color: #a0a0a0;
+}
+
+
+/* --- SEÇÃO DE CONTATO --- */
+.contact-section {
+    padding: 6rem 0;
+}
+
+.contact-box {
+    background: #1c1032;
+    border-radius: 20px;
+    padding: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #3a2c52;
+}
+
+/* Efeito de brilho (glow) */
+.contact-box::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, #bf69f233, transparent 60%);
+    transform: translate(-50%, -50%);
+    filter: blur(50px);
+    z-index: 1;
+}
+
+.contact-info, .contact-action, .contact-graphic {
+    position: relative;
+    z-index: 2; /* Garante que o conteúdo fique acima do brilho */
+}
+
+.contact-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.availability {
+    display: inline-block;
+    background-color: #2e2245;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #3a2c52;
+    border-radius: 50%;
+    color: #eaeaea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background-color: #bf69f2;
+    border-color: #bf69f2;
+    color: #100820;
+}
+
+.contact-button {
+    background: linear-gradient(90deg, #8A2BE2, #bf69f2);
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-button:hover {
+    box-shadow: 0 0 20px #bf69f288;
+}
+
+.contact-graphic {
+    position: absolute;
+    right: 20px;
+    bottom: -20px;
+    opacity: 0.5;
+    pointer-events: none; /* Impede que o SVG interfira com o mouse */
+}
+/* --- AJUSTES FINAIS NA SEÇÃO DE PROJETOS --- */
+
+/* Adicione esta regra para o link que envolve o card */
+.project-link {
+    text-decoration: none; /* Remove o sublinhado azul do link */
+    display: block; /* Faz o link ocupar o espaço do card */
+    color: inherit; /* Faz o texto herdar a cor do card */
+}
+
+/* Adicione esta regra para a div que segura o vídeo */
+.project-preview {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background-color: #100820; /* Cor de fundo enquanto o vídeo carrega */
+}
+
+/* Adicione esta regra para estilizar o vídeo */
+.project-preview video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre todo o espaço, cortando se necessário */
+    object-position: top; /* Começa a exibir o vídeo pelo topo */
+    transition: transform 0.4s ease;
+}
+
+/* Efeito de destaque no hover (agora no link) */
+.project-link:hover .project-card {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 10px 40px #bf69f255;
+}
+
+
+
+/* --- SEÇÃO DE HABILIDADES (SKILLS) --- */
+.skills-section {
+    padding: 6rem 0;
+    text-align: center;
+}
+
+.skills-section .section-title {
+    margin-bottom: 3rem; /* Aumenta o espaço abaixo do título */
+}
+
+.skills-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem; /* Espaçamento entre os ícones */
+    flex-wrap: wrap; 
+    padding: 0 2rem; 
+}
+
+.skills-icons img {
+    height: 50px;
+    width: 50px; /* Definir largura e altura iguais para consistência */
+    cursor: pointer;
+    opacity: 0.7; /* Opacidade inicial para o efeito de hover */
+    
+    /* ================================================================ */
+    /* LINHA PRINCIPAL FALTANTE: Adiciona a cor roxa padrão ao ícone    */
+    /* ================================================================ */
+    filter: invert(56%) sepia(51%) saturate(1478%) hue-rotate(234deg) brightness(97%) contrast(92%);
+    
+    transition: all 0.3s ease-in-out; /* Transição suave para TODOS os efeitos */
+}
+
+.skills-icons img:hover {
+    opacity: 1; /* Opacidade total no hover */
+    transform: translateY(-5px); /* Efeito de "levantar" o ícone */
+
+    /* ================================================================ */
+    /* EFEITO DE HOVER: Muda o filtro para a cor roxa clara             */
+    /* ================================================================ */
+    filter: invert(82%) sepia(21%) saturate(1131%) hue-rotate(222deg) brightness(101%) contrast(101%);
+}
+/* Adicione este código ao seu style.css */
+
+/* --- SEÇÃO SOBRE MIM --- */
+.about-section {
+    padding: 6rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+}
+
+.about-content {
+    max-width: 800px; /* Limita a largura do texto para melhor legibilidade */
+    text-align: left; /* Alinha o texto do parágrafo à esquerda */
+    color: #c0c0c0; /* Uma cor de texto suave */
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    line-height: 1.8; /* Aumenta o espaçamento entre as linhas */
+    margin-bottom: 1.5rem; /* Espaço entre os parágrafos */
+}
+
+/* --- ATUALIZAÇÃO PARA A ROLAGEM SUAVE --- */
+/* Adicione o #sobre à lista para corrigir o espaçamento do header */
+#inicio, #sobre, #projetos, #servicos, #contato {
+    scroll-margin-top: 100px;
+}
+/* --- CLASSES GERAIS DE ANIMAÇÃO --- */
+
+/* Estado inicial: o elemento está invisível e um pouco para baixo */
+.fade-in-element {
+    opacity: 0;
+    transform: translateY(30px); /* Começa 30px abaixo da posição final */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Estado final: o elemento se torna visível na sua posição original */
+.fade-in-element.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ====================================================== */
+/* CSS RESPONSIVO (MEDIA QUERIES)                    */
+/* ====================================================== */
+
+/* --- PARA TABLETS (Telas até 992px de largura) --- */
+@media (max-width: 992px) {
+    .hero-section .title {
+        font-size: 5rem; /* Primeira redução no título principal */
+    }
+
+    .about-content {
+        max-width: 90%; /* Permite que o texto ocupe mais espaço */
+    }
+    
+    .contact-box {
+        flex-direction: column; /* Coloca o conteúdo do contato em coluna */
+        gap: 2rem;
+        text-align: center;
+    }
+}
+
+
+/* --- PARA CELULARES GRANDES E TABLETS PEQUENOS (Telas até 768px de largura) --- */
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px; /* Diminui o espaçamento do header */
+    }
+    
+    #inicio, #sobre, #projetos, #servicos, #contato {
+        scroll-margin-top: 80px; /* Ajusta o ponto de parada da rolagem */
+    }
+
+    /* --- Ajustes no Header para Mobile --- */
+    .navbar {
+        padding: 1rem 0;
+    }
+    
+    /* Esconde os links e o botão de currículo */
+    .nav-links, .resume-button {
+        display: none;
+    }
+    
+    /* Adicionaremos um botão "hambúrguer" com JS para abrir o menu */
+    /* Por enquanto, o header ficará apenas com o logo */
+    
+    .navbar .container {
+        justify-content: center; /* Centraliza o logo quando o menu some */
+    }
+
+
+    /* --- Ajustes nas Seções --- */
+    .section-title {
+        font-size: 2.5rem; /* Diminui o tamanho dos títulos de seção */
+    }
+
+    .hero-section {
+        padding: 2rem 0 4rem 0;
+    }
+
+    .hero-section .title {
+        font-size: 3.5rem; /* Redução drástica para caber no celular */
+        line-height: 1.2;
+    }
+    
+    .projects-grid {
+        /* O auto-fit já faz o trabalho de quebrar as colunas, 
+           mas podemos diminuir o espaçamento */
+        gap: 1.5rem;
+    }
+    
+    .skills-grid {
+        gap: 1.5rem;
+    }
+    
+    .skill-icon-circle {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .skill-icon-circle img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* --- PARA CELULARES PEQUENOS (Telas até 480px de largura) --- */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1rem; /* Diminui o espaçamento lateral */
+    }
+
+    .hero-section .title {
+        font-size: 2.8rem; /* Ajuste final no título */
+    }
+
+    .hero-section .profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .about-content p {
+        font-size: 1rem; /* Diminui um pouco o texto */
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .skills-grid {
+        gap: 1rem;
+    }
+}
