@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/FE.svg">
+
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -21,23 +23,34 @@
     </div>
     
     <header class="navbar">
-        <div class="container">
-            <div class="logo">FE</div>
+    <div class="container">
+        <div class="logo-desktop">FE</div>
 
-            <nav class="nav-links">
-                <a href="#inicio">Início</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#sobre">Sobre</a> 
-                <a href="#projetos">Projetos</a>
-            </nav>
+        <button class="logo-mobile" id="menu-toggle-button" aria-label="Abrir menu">FE</button>
 
-                <a href="CV - Fabio Echenique - Estágio em Desenvolvimento Front-End (2).pdf" target="_blank" rel="noopener noreferrer" class="resume-button">
-                currículo
-                </a>
-        </div>
-    </header>
+        <nav class="desktop-nav-links">
+            <a href="#inicio">Início</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#servicos">Serviços</a>
+        </nav>
 
+            <a href="CV - Fabio Echenique - Estágio em Desenvolvimento Front-End (2).pdf" target="_blank" rel="noopener noreferrer" class="resume-button">
+            currículo
+        </a>
+    </div>
+</header>
+
+<div class="mobile-menu" id="mobile-nav">
+    <button class="close-menu-button" aria-label="Fechar menu">&times;</button>
+    <nav>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="CV - Fabio Echenique - Estágio em Desenvolvimento Front-End (2).pdf" target="_blank" rel="noopener noreferrer">Currículo</a>
+    </nav>
+</div>
     <div class="container">
         
         <section class="hero-section" id="inicio">
@@ -48,7 +61,7 @@
                 <span class="gradient-text fade-in-element">DEV</span>
             </h1>
             <p class="subtitle">Programador capacitado para o futuro</p>
-            <p class="description">Focando meus projetos favoritos a seguir</p>
+            <br>
         </section>
 
         <section class="about-section" id="sobre">
@@ -71,7 +84,7 @@
         </p>
     </div>
 </section>   
-
+            <p class="description">Focando meus projetos favoritos a seguir</p>
         <section class="projects-section" id="projetos">
             <div class="projects-grid fade">
                 <a href="https://fabinhose12.github.io/gtahub/" target="_blank" rel="noopener noreferrer" class="project-link">
