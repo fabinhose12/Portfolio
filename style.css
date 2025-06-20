@@ -572,10 +572,25 @@ body.scrolled .navbar {
     
     .contact-box {
         flex-direction: column; 
-        gap: 2rem;
+        gap: 1.5rem;
         text-align: center;
+        padding: 2rem;
     }
+    .contact-info h3 {
+        font-size: 1.3rem;
+    }
+    .contact-action {
+        width: 100%;
+    }
+    .contact-button {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
 }
+
+
 
 
 
